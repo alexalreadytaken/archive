@@ -1,6 +1,5 @@
 package example.archive;
 
-import example.archive.dto.Case;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
