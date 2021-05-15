@@ -1,6 +1,8 @@
 package example.archive.entities;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -8,7 +10,10 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(of = "id")
+@ToString(exclude = "fund")
 public class FundName {
 
     @Id
@@ -17,8 +22,10 @@ public class FundName {
 
     private LocalDateTime fromDate;
 
+    @Column(columnDefinition = "TEXT")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL,optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Fund fund;
 }
