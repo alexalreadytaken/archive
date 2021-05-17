@@ -1,3 +1,5 @@
+/* HEADER */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -17,4 +19,33 @@
 
 .login {
   margin-right: 20px;
+}
+
+/* SEARCH BLOCK */
+
+.search-block {
+  background-color: darkgrey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-group {
+  width: 700px;
+}
+
+.search-number {
+  width: 80px;
+}
+
+.search-name {
+  width: 400px;
+}
+
+.buffer-block {
+  margin-right: 20px;
+}
+
+.output-buffer {
+  width: 80px;
 }
