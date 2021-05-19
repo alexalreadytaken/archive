@@ -1,23 +1,39 @@
 package example.archive.entities;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Map;
 
 @Entity
+@Table(name = "deal")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
 @ToString(exclude = "inventory")
+// TODO: 5/19/21 RENAME
 public class Deal {
 
     @Id
     @GeneratedValue
     private Long id;
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @PrimaryKeyJoinColumn
+    private Inventory inventory;
+
+    @ElementCollection
+    @CollectionTable(name = "deal_pointers")
+    @MapKeyJoinColumn(name = "pointer_id")
+    @Column(name = "value",columnDefinition = "TEXT")
+    private Map<Pointer,String> pointers;
 
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
@@ -29,10 +45,6 @@ public class Deal {
     @PrimaryKeyJoinColumn
     private DealNumber oldNumber;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @PrimaryKeyJoinColumn
-    private Inventory inventory;
 
     @Column(columnDefinition = "TEXT")
     private String heading;

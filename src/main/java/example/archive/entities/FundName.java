@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "fund_name")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

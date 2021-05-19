@@ -13,18 +13,10 @@ import org.springframework.util.Assert;
 
 @SpringBootTest
 @Slf4j
-public class EntitiesTests {
+public class FundTests {
 
     @Autowired
-    private DealNumberRepo dealNumberRepo;
-    @Autowired
-    private DealRepo dealRepo;
-    @Autowired
-    private FundNameRepo fundNameRepo;
-    @Autowired
     private FundRepo fundRepo;
-    @Autowired
-    private InventoryRepo inventoryRepo;
 
     private final String testFundNumber = "i hope this number not exists";
 
@@ -43,7 +35,7 @@ public class EntitiesTests {
     }
 
     @Test
-    public void cascadeInsertTest(){
+    public void cascadeFundInsertTest(){
         log.info("test for cascade saving entities");
         Fund fund = TestEntitiesProvider.getDeepFund(2, 2);
         fundRepo.save(fund);

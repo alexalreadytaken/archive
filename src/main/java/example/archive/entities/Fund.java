@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Entity
+@Table(name = "fund")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
