@@ -1,0 +1,30 @@
+.main-inventory-table {
+  background-color: rgba(175, 235, 222, 0.678);
+  height: 600px;
+  position: relative;
+}
+
+.inventory-buttons {
+  position: absolute;
+  bottom: 0;
+}
+
+.grid-inventory-table {
+  display: grid;
+
+  grid-template-columns: 70px 90px 190px;
+  grid-template-rows: 60px;
+}
+
+.inventory-item {
+  text-align: center;
+  border: 2px dashed rgb(176, 60, 243);
+
+  max-height: 10px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.inventory-item:nth-child(-n + 3) {
+  max-height: 60px;
+}
