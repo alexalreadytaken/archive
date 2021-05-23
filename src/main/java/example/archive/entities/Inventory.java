@@ -33,5 +33,5 @@ public class Inventory {
 
     @OneToMany(mappedBy = "inventory",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
-    private List<Deal> deals;
+    private List<File> files;
 }

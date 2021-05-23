@@ -1,8 +1,6 @@
 package example.archive.entities;
 
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,15 +8,14 @@ import javax.persistence.*;
 import java.util.Map;
 
 @Entity
-@Table(name = "deal")
+@Table(name = "file")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
 @ToString(exclude = "inventory")
-// TODO: 5/19/21 RENAME
-public class Deal {
+public class File {
 
     @Id
     @GeneratedValue
@@ -29,21 +26,22 @@ public class Deal {
     @PrimaryKeyJoinColumn
     private Inventory inventory;
 
+    // FIXME: 5/23/21
     @ElementCollection
-    @CollectionTable(name = "deal_pointers")
-    @MapKeyJoinColumn(name = "pointer_id")
+    @CollectionTable(name = "file_indexes")
+    @MapKeyJoinColumn(name = "index_id")
     @Column(name = "value",columnDefinition = "TEXT")
-    private Map<Pointer,String> pointers;
+    private Map<Index,String> pointers;
 
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @PrimaryKeyJoinColumn
-    private DealNumber number;
+    private FileNumber number;
 
     @OneToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @PrimaryKeyJoinColumn
-    private DealNumber oldNumber;
+    private FileNumber oldNumber;
 
 
     @Column(columnDefinition = "TEXT")

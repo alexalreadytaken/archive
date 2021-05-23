@@ -22,17 +22,17 @@ public class TestEntitiesProvider {
         fund.setNumber("3234");
         fund.setInventories(inventories);
         for (int i = 0; i < inventoriesCount; i++) {
-            List<Deal> deals = new ArrayList<>();
+            List<File> files = new ArrayList<>();
             Inventory inventory = Inventory.builder()
-                    .fund(fund).deals(deals)
+                    .fund(fund).files(files)
                     .introduction("intro")
                     .number(i + "").build();
             inventories.add(inventory);
             for (int j = 0; j < dealCountInInventory; j++) {
-                DealNumber dealNumber = new DealNumber();
-                dealNumber.setNumber(i+"."+j);
-                Deal deal = Deal.builder()
-                        .number(dealNumber)
+                FileNumber fileNumber = new FileNumber();
+                fileNumber.setNumber(i+"."+j);
+                File file = File.builder()
+                        .number(fileNumber)
                         .inventory(inventory)
                         .annotation("annotation").heading("heading")
                         .sheetCount(random.nextInt(1000))
@@ -41,8 +41,8 @@ public class TestEntitiesProvider {
                         .yearFrom(1900+j)
                         .yearTo(2000+i)
                         .build();
-                dealNumber.setADeal(deal);
-                deals.add(deal);
+                fileNumber.setAFile(file);
+                files.add(file);
             }
         }
         return fund;

@@ -7,14 +7,14 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "deal_number")
+@Table(name = "file_number")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = "aDeal")
-public class DealNumber {
+@ToString(exclude = "aFile")
+public class FileNumber {
 
     @Id
     @GeneratedValue
@@ -25,5 +25,5 @@ public class DealNumber {
 
     @OneToOne(cascade = CascadeType.ALL,optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Deal aDeal;
+    private File aFile;
 }
