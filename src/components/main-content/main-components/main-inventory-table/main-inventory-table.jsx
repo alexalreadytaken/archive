@@ -4,22 +4,22 @@ import './main-inventory-table.css';
 function InventoryTable () {
   return(
   <div className="main-inventory-table">
-        <div className="grid-inventory-table">
-          <div className="inventory-item">№ описи</div>
-          <div className="inventory-item">Номер фонда</div>
-          <div className="inventory-item">Введение</div>
-          <div className="inventory-item">1</div>
-          <div className="inventory-item">2444</div>
-          <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
-          <div className="inventory-item">1</div>
-          <div className="inventory-item">2444</div>
-          <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
-          <div className="inventory-item">1</div>
-          <div className="inventory-item">2444</div>
-          <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
-          <div className="inventory-item">1</div>
-          <div className="inventory-item">2444</div>
-          <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
+        <div className="grid-header-inventory-table">
+          <div className="inventory-item-header header-inventory-tabel">№ описи</div>
+          <div className="inventory-item-header header-inventory-tabel">Введение</div>
+        </div>
+
+        <div className="inventorys">
+          <div className="grid-inventory-table">
+            <div className="inventory-item">1</div>
+            <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
+            <div className="inventory-item">1</div>
+            <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
+            <div className="inventory-item">1</div>
+            <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
+            <div className="inventory-item">1</div>
+            <div className="inventory-item">Что то там происходило как быть не знаем совсем</div>
+          </div>
         </div>
 
         <div className="inventory-buttons">

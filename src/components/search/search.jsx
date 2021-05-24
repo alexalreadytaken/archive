@@ -3,7 +3,7 @@ import "./search.css"
 
 function Search () {
 
-  const n = (e) => console.log(e.target.value)
+  // const n = (e) => console.log(e.target.value)
 
   return (
     <section className="search-block">
@@ -11,7 +11,7 @@ function Search () {
         <legend style={{alignItems: "center"}}>Фонд</legend>
 
         <label htmlFor="number" className="search-lable">Номер</label>
-        <input type="text" id="number" className="search-number" onChange={n} />
+        <input type="text" id="number" className="search-number" />
 
         <label htmlFor="name" className="search-lable">Название</label>
         <input type="text" id="name" className="search-name"/>

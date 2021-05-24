@@ -3,32 +3,23 @@ import React,{useState} from 'react';
 import Header from './header/header.jsx';
 import Search from './search/search.jsx';
 import MainContent from './main-content/main-content.jsx';
-import InventoryTable from './main-content/main-components/main-inventory-table/main-inventory-table.jsx'
+import InventoryTable from './main-content/main-components/main-inventory-table/main-inventory-table.jsx';
+import TablesForAffairs from './main-content/main-components/tables-for-affairs/tables-for-affairs.jsx';
+import AffairsTable from './main-content/main-components/tables-for-affairs/affairs-table/main-affairs-table.jsx';
 
 
 function App() {
-
-  let [state, setState] = useState([{id:1}]);
-  console.log(state);
-
-  function se () {
-    setState((prev) =>  [...prev, ...[{id:2}, {id:3}]])
-  console.log(state);
-  }
-
-  window.onclick = function() {
-    setState((prev) =>  [...prev, ...[{id:2}, {id:3}]])
-  console.log(state);
-  };
-
   return (
-    // Этот див оберта для того чтобы реакт понимал так как все теги должны быть в нутри одного главного
+    // Этот див обертка для того чтобы реакт понимал так как все теги должны быть внутри одного главного
     <div>
       <Header/>
         <div className="container">
           <Search/>
-          <MainContent>
-            <InventoryTable></InventoryTable>
+          <MainContent>              
+            <InventoryTable/>
+            <TablesForAffairs>
+              <AffairsTable/>
+            </TablesForAffairs>
           </MainContent>
         </div>
     </div>
