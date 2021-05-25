@@ -6,6 +6,10 @@
 }
 
 .grid-header-affairs-table {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+
   display: grid;
   grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
 }
@@ -20,7 +24,23 @@
   outline-offset: -2px;
 }
 
-.affairs {
+.grid-start-end-dates {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
+}
+
+.start-end-dates-item {
+  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-dates-day {
+  grid-column-start: 4;
 }
 
 .affair {

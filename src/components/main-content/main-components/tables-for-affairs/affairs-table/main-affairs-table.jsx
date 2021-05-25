@@ -39,6 +39,8 @@ function AffairsTable () {
           <div className="affairs-item-header note">Примечание</div>
         </div>
 
+        
+
         <div className="affairs">
           <div className="affair">
             <div className="affair-item affair-number">1</div>
@@ -305,6 +307,16 @@ function AffairsTable () {
             <div className="affair-item affair-defects">чтьо</div>
             <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
           </div>
+        </div>
+      
+      
+      <div className="grid-start-end-dates">
+          <div className="start-end-dates-item start-dates-day">02</div>
+          <div className="start-end-dates-item start-dates-month">Сентября</div>
+          <div className="start-end-dates-item start-dates-year">1897</div>
+          <div className="start-end-dates-item end-dates-day">24</div>
+          <div className="start-end-dates-item end-dates-month">Октября</div>
+          <div className="start-end-dates-item end-dates-year">1980</div>
         </div>
       </div>
     </div>
