@@ -19,6 +19,11 @@ function Search () {
         <button className="search-button">Вывести</button>
       </fieldset>
 
+      <div className="create-edit-foundation">
+        <button className="create-foundation">Добавить новый</button>
+        <button className="edit-foundation">Редактировать</button>
+      </div>
+
       <div className="buffer-block">
       <label htmlFor="buffer">Дел в буфере</label>
       <input type="text" id="buffer" className="output-buffer" disabled="disabled"/>
