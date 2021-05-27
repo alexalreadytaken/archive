@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "index")
+@Table(name = "indexes")
 @Data
 @Builder
 @NoArgsConstructor

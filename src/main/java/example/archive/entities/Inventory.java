@@ -1,20 +1,17 @@
 package example.archive.entities;
 
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "inventory")
+@Table(name = "inventories")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = "fund")
 public class Inventory {
     @Id
     @GeneratedValue
@@ -26,12 +23,8 @@ public class Inventory {
     @Column(columnDefinition = "TEXT")
     private String introduction;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Fund fund;
-
-    @OneToMany(mappedBy = "inventory",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    private List<File> files;
+    @OneToMany(targetEntity = File.class,orphanRemoval = true,
+            fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "inventory_id",referencedColumnName = "id")
+    private Set<File> files;
 }

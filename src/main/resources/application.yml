@@ -1,8 +1,8 @@
 spring:
     datasource:
-        password: root
-        url: jdbc:postgresql://localhost:5432/archive
+        url: jdbc:postgresql://10.3.0.101:5432/archive
         username: postgres
+        password: password
     jpa:
         generate-ddl: true
         hibernate:

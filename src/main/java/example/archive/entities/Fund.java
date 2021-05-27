@@ -1,15 +1,15 @@
 package example.archive.entities;
 
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.JoinFormula;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
-import java.util.List;
+import javax.validation.constraints.Max;
+import java.util.Set;
 
 @Entity
-@Table(name = "fund")
+@Table(name = "funds")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,12 +24,18 @@ public class Fund {
     @Column(columnDefinition = "TEXT")
     private String number;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @PrimaryKeyJoinColumn
-    private FundName fundName;
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "fund_name_id",referencedColumnName = "id")
+    private FundName currentFundName;
 
-    @OneToMany(mappedBy = "fund",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    private List<Inventory> inventories;
+    @OneToMany(targetEntity = FundName.class,orphanRemoval = true,
+            fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "fund_id",referencedColumnName = "id")
+    private Set<FundName> oldNames;
+
+    @OneToMany(targetEntity = Inventory.class,orphanRemoval = true,
+            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "fund_id",referencedColumnName = "id")
+    private Set<Inventory> inventories;
+
 }

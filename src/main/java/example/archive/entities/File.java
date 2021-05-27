@@ -8,23 +8,17 @@ import javax.persistence.*;
 import java.util.Map;
 
 @Entity
-@Table(name = "file")
+@Table(name = "files")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = "inventory")
 public class File {
 
     @Id
     @GeneratedValue
     private Long id;
-
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @PrimaryKeyJoinColumn
-    private Inventory inventory;
 
     // FIXME: 5/23/21
     @ElementCollection
@@ -42,7 +36,6 @@ public class File {
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @PrimaryKeyJoinColumn
     private FileNumber oldNumber;
-
 
     @Column(columnDefinition = "TEXT")
     private String heading;

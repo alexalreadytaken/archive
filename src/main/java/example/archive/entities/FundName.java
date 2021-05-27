@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "fund_name")
+@Table(name = "fund_names")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +26,6 @@ public class FundName {
     @Column(columnDefinition = "TEXT")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToOne
     private Fund fund;
 }

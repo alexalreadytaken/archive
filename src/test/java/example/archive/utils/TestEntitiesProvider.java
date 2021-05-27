@@ -3,37 +3,32 @@ package example.archive.utils;
 import example.archive.entities.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class TestEntitiesProvider {
 
     // FIXME: 5/14/21
+    @Deprecated
     public static Fund getDeepFund(int inventoriesCount,int dealCountInInventory){
         Random random = new Random();
-        List<Inventory> inventories = new ArrayList<>();
+        Set<Inventory> inventories = new HashSet<>();
         Fund fund = new Fund();
         FundName fundName = new FundName();
-        fundName.setFund(fund);
         fundName.setName("FUND_NAME");
         fundName.setFromDate(LocalDateTime.of(1900,12,12,12,12));
-        fund.setFundName(fundName);
+        fund.setCurrentFundName(fundName);
         fund.setNumber("3234");
-        fund.setInventories(inventories);
         for (int i = 0; i < inventoriesCount; i++) {
-            List<File> files = new ArrayList<>();
             Inventory inventory = Inventory.builder()
-                    .fund(fund).files(files)
                     .introduction("intro")
                     .number(i + "").build();
             inventories.add(inventory);
+            Set<File> files = new HashSet<>();
             for (int j = 0; j < dealCountInInventory; j++) {
                 FileNumber fileNumber = new FileNumber();
                 fileNumber.setNumber(i+"."+j);
                 File file = File.builder()
                         .number(fileNumber)
-                        .inventory(inventory)
                         .annotation("annotation").heading("heading")
                         .sheetCount(random.nextInt(1000))
                         .docType("maybe text").dropout(false)
@@ -44,7 +39,9 @@ public class TestEntitiesProvider {
                 fileNumber.setAFile(file);
                 files.add(file);
             }
+            inventory.setFiles(files);
         }
+        fund.setInventories(inventories);
         return fund;
     }
 

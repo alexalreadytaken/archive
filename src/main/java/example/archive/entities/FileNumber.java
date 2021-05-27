@@ -7,7 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "file_number")
+@Table(name = "file_numbers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
