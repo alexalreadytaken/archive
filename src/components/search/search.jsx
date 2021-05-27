@@ -1,10 +1,7 @@
 import React from "react";
 import "./search.css"
 
-function Search () {
-
-  // const n = (e) => console.log(e.target.value)
-
+function Search (props) {
   return (
     <section className="search-block">
       <fieldset className="search-group">
@@ -20,7 +17,7 @@ function Search () {
       </fieldset>
 
       <div className="create-edit-foundation">
-        <button className="create-foundation">Добавить новый</button>
+        <button className="create-foundation" onClick={() => props.setActive(true)}>Добавить новый</button>
         <button className="edit-foundation">Редактировать</button>
       </div>
 

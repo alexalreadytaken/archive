@@ -11,13 +11,17 @@ import BtnOtherTables from './main-content/main-components/tables-for-affairs/bu
 import PointerTable from './main-content/main-components/tables-for-affairs/pointer-table/pointer-table.jsx';
 import StatesTable from './main-content/main-components/tables-for-affairs/states-table/states-table.jsx';
 import AffairsTable from './main-content/main-components/tables-for-affairs/affairs-table/main-affairs-table.jsx';
+import Modal from './modal/modal.jsx'
 
 
 function App() {
 
-  
-  let [visible, setVisible] = useState('none');
+  // Модальное окно
+  const [modalActive, setModalActive] = useState(true) 
 
+  
+  // Показ таблицы указатилей
+  let [visible, setVisible] = useState('none');
   const visibleChange = ( ) =>{
     if(visible === 'none'){
       setVisible('block');
@@ -27,11 +31,10 @@ function App() {
   }
 
   return (
-    // Этот див обертка для того чтобы реакт понимал так как все теги должны быть внутри одного главного
-    <div>
+    <>
       <Header/>
         <div className="container">
-          <Search/>
+          <Search setActive={setModalActive}/>
           <MainContent>              
             <InventoryTable/>
             <TablesForAffairs>
@@ -44,7 +47,8 @@ function App() {
             </TablesForAffairs>
           </MainContent>
         </div>
-    </div>
+        <Modal active={modalActive} setActive={setModalActive}/>
+    </>
   );
 }
 
