@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(of = "id")
 @ToString(exclude = "fund")
+@EqualsAndHashCode(of = "id")
 public class FundName {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDateTime fromDate;
@@ -27,5 +27,6 @@ public class FundName {
     private String name;
 
     @OneToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Fund fund;
 }

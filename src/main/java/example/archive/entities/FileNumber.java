@@ -13,17 +13,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
-@ToString(exclude = "aFile")
 public class FileNumber {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String number;
 
-    @OneToOne(cascade = CascadeType.ALL,optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private File aFile;
 }

@@ -7,44 +7,79 @@ import java.util.*;
 
 public class TestEntitiesProvider {
 
-    // FIXME: 5/14/21
-    @Deprecated
-    public static Fund getDeepFund(int inventoriesCount,int dealCountInInventory){
-        Random random = new Random();
-        Set<Inventory> inventories = new HashSet<>();
+    public static List<File> getFiles(){
+        return getFiles(2);
+    }
+
+    public static List<Inventory> getInventories(){
+        return getInventories(2);
+    }
+
+    public static List<Fund> getFunds(){
+        return getFunds(2);
+    }
+
+    public static List<Fund> getFunds(int count) {
+        List<Fund> funds = new ArrayList<>();
+        for (int i = 0; i < count; i++) funds.add(getFund());
+        return funds;
+    }
+
+    public static List<Inventory> getInventories(int count){
+        List<Inventory> inventories = new ArrayList<>();
+        for (int i = 0; i < count; i++) inventories.add(getInventory());
+        return inventories;
+    }
+
+    public static List<File> getFiles(int count){
+        List<File> files = new ArrayList<>();
+        for (int i = 0; i <count; i++) files.add(getFile());
+        return files;
+    }
+
+    public static Fund getFund(){
         Fund fund = new Fund();
-        FundName fundName = new FundName();
-        fundName.setName("FUND_NAME");
-        fundName.setFromDate(LocalDateTime.of(1900,12,12,12,12));
-        fund.setCurrentFundName(fundName);
-        fund.setNumber("3234");
-        for (int i = 0; i < inventoriesCount; i++) {
-            Inventory inventory = Inventory.builder()
-                    .introduction("intro")
-                    .number(i + "").build();
-            inventories.add(inventory);
-            Set<File> files = new HashSet<>();
-            for (int j = 0; j < dealCountInInventory; j++) {
-                FileNumber fileNumber = new FileNumber();
-                fileNumber.setNumber(i+"."+j);
-                File file = File.builder()
-                        .number(fileNumber)
-                        .annotation("annotation").heading("heading")
-                        .sheetCount(random.nextInt(1000))
-                        .docType("maybe text").dropout(false)
-                        .nominal("my").defectsType('a')
-                        .yearFrom(1900+j)
-                        .yearTo(2000+i)
-                        .build();
-                fileNumber.setAFile(file);
-                files.add(file);
-            }
-            inventory.setFiles(files);
-        }
-        fund.setInventories(inventories);
+        fund.setCurrentFundName(getFundName(fund));
+        fund.setInventories(getInventories());
+        fund.setNumber("номер фонда");
+        fund.setOldNames(new ArrayList<>());
         return fund;
     }
 
+    public static FundName getFundName(Fund fund){
+        return FundName.builder()
+                .fund(fund)
+                .name("имя фонда")
+                .fromDate(LocalDateTime.now())
+                .build();
+    }
 
+    public static Inventory getInventory(){
+        return Inventory
+                .builder()
+                .files(getFiles())
+                .number("номер описи")
+                .introduction("введение в опись")
+                .build();
+    }
 
+    public static File getFile(){
+        File file = File.builder()
+                .annotation("аннотация дела")
+                .heading("оглавление дела")
+                .sheetCount(100)
+                .docType("бумажный/фото")
+                .nominal("чей-то")
+                .dropout(false)
+                .defectsType('a')
+                .build();
+        file.setCurrentNumber(getFileNumber());
+        return file;
+    }
+
+    public static FileNumber getFileNumber(){
+        return FileNumber.builder()
+                .number("номер дела")
+                .build();
+    }
 }

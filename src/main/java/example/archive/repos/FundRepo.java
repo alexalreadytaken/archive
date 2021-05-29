@@ -21,4 +21,5 @@ public interface FundRepo extends JpaRepository<Fund,Long> {
     @Modifying
     @Query("update Fund set number=:number")
     void setFundNumber(@Param("number") String number);
+
 }

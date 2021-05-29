@@ -3,6 +3,7 @@ package example.archive.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,7 @@ import java.util.Set;
 @EqualsAndHashCode(of = "id")
 public class Inventory {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(columnDefinition = "TEXT")
@@ -26,5 +27,5 @@ public class Inventory {
     @OneToMany(targetEntity = File.class,orphanRemoval = true,
             fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id",referencedColumnName = "id")
-    private Set<File> files;
+    private List<File> files;
 }

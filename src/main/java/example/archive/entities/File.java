@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.Map;
 
 @Entity
@@ -17,24 +18,22 @@ import java.util.Map;
 public class File {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // FIXME: 5/23/21
+    /*// FIXME: 5/23/21
     @ElementCollection
     @CollectionTable(name = "file_indexes")
     @MapKeyJoinColumn(name = "index_id")
     @Column(name = "value",columnDefinition = "TEXT")
-    private Map<Index,String> pointers;
+    private Map<Index,String> pointers;*/
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @PrimaryKeyJoinColumn
-    private FileNumber number;
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "current_file_number_id",referencedColumnName = "id")
+    private FileNumber currentNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @PrimaryKeyJoinColumn
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "old_file_number_id",referencedColumnName = "id")
     private FileNumber oldNumber;
 
     @Column(columnDefinition = "TEXT")
@@ -45,7 +44,7 @@ public class File {
     @Column(columnDefinition = "TEXT")
     private String annotation;
 
-    // TODO: 5/13/21 type
+    @Column(columnDefinition = "TEXT")
     private String docType;
 
     @Column(columnDefinition = "TEXT")
