@@ -1,5 +1,6 @@
 package example.archive.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 @ToString(exclude = "fund")
 @EqualsAndHashCode(of = "id")
+@JsonIgnoreProperties(value = "fund")
 public class FundName {
 
     @Id

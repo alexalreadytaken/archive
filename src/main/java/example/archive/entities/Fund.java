@@ -1,16 +1,15 @@
 package example.archive.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.annotations.*;
-import org.springframework.validation.annotation.Validated;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "funds")
@@ -19,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
+@JsonIgnoreProperties(value = "inventories")
 public class Fund {
 
     @Id
@@ -32,14 +32,15 @@ public class Fund {
     @JoinColumn(name = "fund_name_id",referencedColumnName = "id")
     private FundName currentFundName;
 
-    // TODO: 5/29/21 exclude current name
     @OneToMany(targetEntity = FundName.class,orphanRemoval = true,
             fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "fund_id",referencedColumnName = "id")
+    // TODO: 5/30/21 where current false ?
     private List<FundName> oldNames;
 
+
     @OneToMany(targetEntity = Inventory.class,orphanRemoval = true,
-            fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "fund_id",referencedColumnName = "id")
     private List<Inventory> inventories;
 

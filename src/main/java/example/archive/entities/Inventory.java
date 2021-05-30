@@ -1,5 +1,6 @@
 package example.archive.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "id")
+@JsonIgnoreProperties(value = "files")
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +27,7 @@ public class Inventory {
     private String introduction;
 
     @OneToMany(targetEntity = File.class,orphanRemoval = true,
-            fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+            fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id",referencedColumnName = "id")
     private List<File> files;
 }

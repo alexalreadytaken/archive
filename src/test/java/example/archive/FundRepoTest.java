@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.opentest4j.TestAbortedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
-public class FundTest {
+public class FundRepoTest {
 
     @Autowired
     private FundRepo fundRepo;
@@ -50,10 +49,12 @@ public class FundTest {
     }
 
     @Test
-    public void getFundListTest(){
+    public void multiFundSavingTest(){
         log.info("test for getting all fund");
-        fundRepo.saveAll(TestEntitiesProvider.getFunds(2));
-        assertTrue(fundRepo.count()>=2,"several funds not saved");
+        long oldCount = fundRepo.count();
+        int fundsToSaveCount = 2;
+        fundRepo.saveAll(TestEntitiesProvider.getFunds(fundsToSaveCount));
+        assertEquals(fundRepo.count(), oldCount+fundsToSaveCount, "several funds not saved");
     }
 
     @Test
@@ -68,7 +69,7 @@ public class FundTest {
         log.info("test for delete fund and entire entities");
         fundRepo.deleteById(testFundId);
         Optional<Fund> fund = fundRepo.findById(testFundId);
-        if (fund.isPresent())throw new TestAbortedException("fund not deleted");
+        assertFalse(fund.isPresent(),"fund not deleted");
     }
 
     @Test

@@ -28,11 +28,11 @@ public class File {
     @Column(name = "value",columnDefinition = "TEXT")
     private Map<Index,String> pointers;*/
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "current_file_number_id",referencedColumnName = "id")
     private FileNumber currentNumber;
 
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "old_file_number_id",referencedColumnName = "id")
     private FileNumber oldNumber;
 

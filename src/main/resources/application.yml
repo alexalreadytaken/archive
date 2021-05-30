@@ -7,7 +7,13 @@ spring:
         generate-ddl: true
         hibernate:
             ddl-auto: update
-        show-sql: true
+        show-sql: false
+logging:
+    level:
+        org.hibernate:
+            SQL: debug
+            type: trace
+
 server:
     address: localhost
     port: 3000
