@@ -35,7 +35,6 @@ public class Fund {
     @OneToMany(targetEntity = FundName.class,orphanRemoval = true,
             fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "fund_id",referencedColumnName = "id")
-    // TODO: 5/30/21 where current false ?
     private List<FundName> oldNames;
 
 

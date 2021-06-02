@@ -15,5 +15,4 @@ logging:
             type: trace
 
 server:
-    address: localhost
     port: 3000

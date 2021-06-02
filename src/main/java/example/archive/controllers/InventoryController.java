@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin
 public class InventoryController {
 
     @NonNull private final InventoryService inventoryService;
