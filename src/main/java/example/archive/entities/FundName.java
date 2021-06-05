@@ -28,7 +28,7 @@ public class FundName {
     @Column(columnDefinition = "TEXT")
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Fund fund;
 }

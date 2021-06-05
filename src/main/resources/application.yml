@@ -8,6 +8,15 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: false
+        properties:
+            hibernate:
+                generate_statistics: true
+                id.new_generator_mappings: true
+                jdbc:
+                    batch_size: 20
+                    fetch_size: 20
+                order_inserts: true
+                order_updates: true
 logging:
     level:
         org.hibernate:

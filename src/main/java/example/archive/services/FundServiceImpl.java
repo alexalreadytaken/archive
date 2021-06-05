@@ -24,7 +24,7 @@ public class FundServiceImpl implements FundService {
 
     @Override
     public List<Fund> getFundsList() {
-        return fundRepo.findAll(Sort.by("id"));
+        return fundRepo.selectAllWithJoinFetch();
     }
 
     @Override

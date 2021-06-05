@@ -1,12 +1,8 @@
 package example.archive.entities;
 
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
-import java.util.Map;
 
 @Entity
 @Table(name = "files")
