@@ -10,8 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,8 +60,8 @@ public class FundRepoTest {
     @Test
     public void gettingFundTest(){
         log.info("test for getting fund from db");
-        Fund one = fundRepo.getById(testFundId);
-        Assert.notNull(one,"fund not found");
+        Optional<Fund> one = fundRepo.findById(testFundId);
+        assertTrue(one.isPresent(),"fund not found");
     }
 
     @Test
@@ -80,8 +80,22 @@ public class FundRepoTest {
     }
 
     @Test
+    public void getOldFundNamesTest(){
+        this.updateFundNameTest();
+        Optional<Fund> fundOpt = fundRepo.findById(testFundId);
+        assertTrue(fundOpt.isPresent(),"test fund not found");
+        Fund fund = fundOpt.get();
+        FundName currentFundName = fund.getCurrentFundName();
+        List<FundName> oldNames = fund.getOldNames();
+        assertFalse(oldNames.contains(currentFundName),"current fund name contains in old names");
+    }
+
+    @Test
     public void updateFundNameTest(){
-        Fund fund = fundRepo.getById(testFundId);
+        log.info("start update name test");
+        Optional<Fund> fundOpt = fundRepo.findById(testFundId);
+        assertTrue(fundOpt.isPresent(),"test fund not found");
+        Fund fund = fundOpt.get();
         FundName oldCurrentFundName = fund.getCurrentFundName();
         FundName newCurrentFundName = TestEntitiesProvider.getFundName(fund);
         fund.setCurrentFundName(newCurrentFundName);

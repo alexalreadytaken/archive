@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class FundName {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private LocalDateTime fromDate;
@@ -28,7 +28,7 @@ public class FundName {
     @Column(columnDefinition = "TEXT")
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Fund fund;
 }

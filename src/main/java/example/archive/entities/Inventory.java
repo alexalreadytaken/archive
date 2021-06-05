@@ -17,7 +17,7 @@ import java.util.Set;
 @JsonIgnoreProperties(value = "files")
 public class Inventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(columnDefinition = "TEXT")

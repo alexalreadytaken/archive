@@ -2,13 +2,9 @@ package example.archive.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import java.util.List;
 
 @Entity
@@ -19,10 +15,11 @@ import java.util.List;
 @Builder
 @EqualsAndHashCode(of = "id")
 @JsonIgnoreProperties(value = "inventories")
+@ToString(exclude = "inventories")
 public class Fund {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(columnDefinition = "TEXT")
@@ -35,6 +32,7 @@ public class Fund {
     @OneToMany(targetEntity = FundName.class,orphanRemoval = true,
             fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "fund_id",referencedColumnName = "id")
+    @Where(clause = "select f.fund_name_id!=id from funds f where f.id=fund_id")
     private List<FundName> oldNames;
 
 

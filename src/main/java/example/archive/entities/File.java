@@ -18,7 +18,7 @@ import java.util.Map;
 public class File {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     /*// FIXME: 5/23/21

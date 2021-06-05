@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 
-// TODO: 5/29/21 optimize
 public interface FundRepo extends JpaRepository<Fund,Long> {
     Fund getById(Long id);
 
