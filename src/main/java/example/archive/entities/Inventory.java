@@ -15,6 +15,7 @@ import java.util.Set;
 @Builder
 @EqualsAndHashCode(of = "id")
 @JsonIgnoreProperties(value = "files")
+@ToString(exclude = "files")
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -12,7 +12,7 @@ import java.util.List;
 public interface FundRepo extends JpaRepository<Fund,Long> {
 
     @Query("select f from Fund f join fetch f.currentFundName")
-    List<Fund> selectAllWithJoinFetch();
+    List<Fund> selectAllWithJoinFetchName();
 
     @Transactional
     @Modifying

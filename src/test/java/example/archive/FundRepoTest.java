@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,6 +81,7 @@ public class FundRepoTest {
     }
 
     @Test
+    @Transactional
     public void getOldFundNamesTest(){
         this.updateFundNameTest();
         Optional<Fund> fundOpt = fundRepo.findById(testFundId);
@@ -91,16 +93,18 @@ public class FundRepoTest {
     }
 
     @Test
+    @Transactional
     public void updateFundNameTest(){
         log.info("start update name test");
         Optional<Fund> fundOpt = fundRepo.findById(testFundId);
         assertTrue(fundOpt.isPresent(),"test fund not found");
         Fund fund = fundOpt.get();
-        FundName oldCurrentFundName = fund.getCurrentFundName();
-        FundName newCurrentFundName = TestEntitiesProvider.getFundName(fund);
-        fund.setCurrentFundName(newCurrentFundName);
-        fund.getOldNames().add(oldCurrentFundName);
+        FundName currentFundName = fund.getCurrentFundName();
+        FundName fundName = TestEntitiesProvider.getFundName(fund);
+        fund.setCurrentFundName(fundName);
+        if (currentFundName != null) {
+            fund.getOldNames().add(currentFundName);
+        }
         fundRepo.save(fund);
-        // TODO: 5/29/21 how check
     }
 }

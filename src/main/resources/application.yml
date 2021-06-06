@@ -19,9 +19,13 @@ spring:
                 order_updates: true
 logging:
     level:
+        example.archive: trace
         org.hibernate:
             SQL: debug
             type: trace
-
 server:
     port: 3000
+
+archive:
+    fund:
+        select_name_with_join_fetch: true

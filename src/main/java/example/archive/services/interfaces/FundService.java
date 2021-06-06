@@ -11,6 +11,8 @@ public interface FundService {
 
     Fund saveFund(Fund fund);
 
+    Fund deleteFund(Long fundId);
+
     Fund updateFundName(Long fundId,String name);
 
     List<Inventory> getFundInventories(Long fundId);

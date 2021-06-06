@@ -21,33 +21,40 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Inventory deleteInventory(Long inventoryId) {
-        Inventory inventory = inventoryRepo.findById(inventoryId)
-                .orElseThrow(() -> new NotFoundException("опись не найдена"));
+        Inventory inventory = getInventoryOrThrow(inventoryId);
+        log.trace("delete inventory = '{}'",inventory);
         inventoryRepo.deleteById(inventoryId);
         return inventory;
     }
 
     @Override
     public Inventory updateInventoryIntroduction(Long inventoryId, String introduction) {
-        Inventory inventory = inventoryRepo.findById(inventoryId)
-                .orElseThrow(() -> new NotFoundException("опись не найдена"));
+        Inventory inventory = getInventoryOrThrow(inventoryId);
+        log.trace("update inventory = '{}' set introduction = '{}'",inventory,introduction);
         inventory.setIntroduction(introduction);
         return inventoryRepo.save(inventory);
     }
 
     @Override
     public List<File> getInventoryFiles(Long inventoryId) {
-        return inventoryRepo
-                .findById(inventoryId)
-                .map(Inventory::getFiles)
-                .orElseThrow(()->new NotFoundException("опись не найдена"));
+        return getInventoryOrThrow(inventoryId)
+                .getFiles();
     }
 
     @Override
     public Inventory addFileToInventory(Long inventoryId, File file) {
-        Inventory inventory = inventoryRepo.findById(inventoryId)
-                .orElseThrow(()->new NotFoundException("опись не найдена"));
+        Inventory inventory = getInventoryOrThrow(inventoryId);
+        log.trace("add file = '{}' to inventory = '{}'",file,inventory);
         inventory.getFiles().add(file);
         return inventoryRepo.save(inventory);
+    }
+
+    private Inventory getInventoryOrThrow(Long inventoryId) {
+        log.trace("try find inventory by id = '{}'",inventoryId);
+        return inventoryRepo.findById(inventoryId)
+                .orElseThrow(() -> {
+                    log.warn("inventory by id = '{}' not found",inventoryId);
+                    return new NotFoundException("опись не найдена");
+                });
     }
 }
