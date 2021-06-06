@@ -6,6 +6,9 @@ import example.archive.services.interfaces.FundService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +20,13 @@ import java.util.List;
 public class FundController {
 
     @NonNull private final FundService fundService;
+
+    @MessageMapping("/fund")
+    @SendTo("/topic/funds")
+    public String saveFund(@Payload String fund){
+        log.trace("request for save fund = '{}'",fund);
+        return fund;
+    }
 
     @GetMapping("/fund")
     public List<Fund> fundList(){
