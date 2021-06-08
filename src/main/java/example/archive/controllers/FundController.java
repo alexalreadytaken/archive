@@ -6,11 +6,14 @@ import example.archive.services.interfaces.FundService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,12 +24,20 @@ public class FundController {
 
     @NonNull private final FundService fundService;
 
-    @MessageMapping("/fund")
-    @SendTo("/topic/funds")
-    public String saveFund(@Payload String fund){
-        log.trace("request for save fund = '{}'",fund);
-        return fund;
+    @NonNull private final SimpMessagingTemplate messagingTemplate;
+
+    @MessageMapping("/string")
+    @SendTo("/topic/strings")
+    public String test(@Payload String str){
+        return str+"---"+ LocalDateTime.now();
     }
+
+    @PostMapping("/some/string")
+    @ResponseStatus(HttpStatus.OK)
+    public void some(@RequestBody String str){
+        messagingTemplate.convertAndSend("/topic/strings",str);
+    }
+
 
     @GetMapping("/fund")
     public List<Fund> fundList(){
