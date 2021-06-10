@@ -1,12 +1,12 @@
-package example.archive;
+package example.archive.repos;
 
 import example.archive.entities.Fund;
 import example.archive.entities.FundName;
-import example.archive.repos.FundRepo;
-import example.archive.utils.TestEntitiesProvider;
+import example.archive.utils.TestEntitiesSupplier;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,23 +19,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Slf4j
+@Tag("db-test")
 public class FundRepoTest {
 
-    @Autowired
-    private FundRepo fundRepo;
+    @Autowired private FundRepo fundRepo;
 
     private Long testFundId;
 
     @BeforeEach
-    public void saveTestEntity(){
-        Fund fund = TestEntitiesProvider.getFund();
+    public void prepare(){
+        Fund fund = TestEntitiesSupplier.getFund();
         fundRepo.save(fund);
         testFundId=fund.getId();
         log.info("prepare fund with id {}", testFundId);
     }
 
     @AfterEach
-    public void tryRemoveTestEntity(){
+    public void clean(){
         log.info("removing test find if exists");
         if (fundRepo.existsById(testFundId))fundRepo.deleteById(testFundId);
     }
@@ -43,19 +43,10 @@ public class FundRepoTest {
     @Test
     public void fundSaveTest(){
         log.info("test for cascade saving entities");
-        Fund fund = TestEntitiesProvider.getFund();
+        Fund fund = TestEntitiesSupplier.getFund();
         fundRepo.save(fund);
         assertNotNull(fund.getId(),"id for fund not assigned");
         assertTrue(fundRepo.existsById(fund.getId()),"fund not saved");
-    }
-
-    @Test
-    public void multiFundSavingTest(){
-        log.info("test for getting all fund");
-        long oldCount = fundRepo.count();
-        int fundsToSaveCount = 2;
-        fundRepo.saveAll(TestEntitiesProvider.getFunds(fundsToSaveCount));
-        assertEquals(fundRepo.count(), oldCount+fundsToSaveCount, "several funds not saved");
     }
 
     @Test
@@ -100,11 +91,12 @@ public class FundRepoTest {
         assertTrue(fundOpt.isPresent(),"test fund not found");
         Fund fund = fundOpt.get();
         FundName currentFundName = fund.getCurrentFundName();
-        FundName fundName = TestEntitiesProvider.getFundName(fund);
+        FundName fundName = TestEntitiesSupplier.getFundName(fund);
         fund.setCurrentFundName(fundName);
         if (currentFundName != null) {
             fund.getOldNames().add(currentFundName);
         }
         fundRepo.save(fund);
+        assertFalse(fund.getOldNames().contains(fundName),"current fund name contains in old names");
     }
 }

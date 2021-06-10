@@ -1,6 +1,7 @@
 package example.archive.entities;
 
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 

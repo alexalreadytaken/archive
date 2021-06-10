@@ -32,7 +32,6 @@ public class Fund {
             fetch = FetchType.LAZY)
     @JoinColumn(name = "fund_name_id",referencedColumnName = "id")
     @Fetch(value = FetchMode.JOIN)
-    @UniqueElements
     private FundName currentFundName;
 
     @OneToMany(targetEntity = FundName.class,orphanRemoval = true,

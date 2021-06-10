@@ -5,7 +5,7 @@ import example.archive.entities.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class TestEntitiesProvider {
+public class TestEntitiesSupplier {
 
     public static List<File> getFiles(){
         return getFiles(2);

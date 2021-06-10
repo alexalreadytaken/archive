@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.function.Supplier;
 
 @Service
 @Slf4j
@@ -26,20 +27,22 @@ public class FundServiceImpl implements FundService {
     @Value("${archive.fund.select_name_with_join_fetch:false}")
     private boolean joinFetchEnabled;
 
+    private Supplier<List<Fund>> fundListGetter;
+
     @PostConstruct
     public void init(){
         if (joinFetchEnabled){
+            fundListGetter= fundRepo::selectAllWithJoinFetchName;
             log.trace("enabled select funds with join fetch current fund name");
         }else {
+            fundListGetter= fundRepo::findAll;
             log.trace("enabled default select funds");
         }
     }
 
     @Override
     public List<Fund> getFundsList() {
-        return joinFetchEnabled
-                ? fundRepo.selectAllWithJoinFetchName()
-                : fundRepo.findAll();
+        return fundListGetter.get();
     }
 
     @Override
@@ -57,12 +60,12 @@ public class FundServiceImpl implements FundService {
     }
 
     @Override
-    // TODO: 6/6/21 log
     public Fund updateFundName(Long fundId,String name) {
         Fund fund = getFundOrThrow(fundId);
         FundName currentFundName = fund.getCurrentFundName();
-        FundName fundName = createNewFundName(name,fund);
-        fund.setCurrentFundName(fundName);
+        FundName newFundName = createNewFundName(name,fund);
+        log.trace("set new name = '{}' for fund = '{}'",newFundName,fund);
+        fund.setCurrentFundName(newFundName);
         if (currentFundName != null) {
             fund.getOldNames().add(currentFundName);
         }
