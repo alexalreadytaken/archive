@@ -1,7 +1,8 @@
 package example.archive.entities;
 
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -27,10 +28,12 @@ public class File {
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "current_file_number_id",referencedColumnName = "id")
+    @Fetch(value = FetchMode.JOIN)
     private FileNumber currentNumber;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     @JoinColumn(name = "old_file_number_id",referencedColumnName = "id")
+    @Fetch(value = FetchMode.JOIN)
     private FileNumber oldNumber;
 
     @Column(columnDefinition = "TEXT")

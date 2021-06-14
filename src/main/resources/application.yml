@@ -25,7 +25,3 @@ logging:
             type: trace
 server:
     port: 3000
-
-archive:
-    fund:
-        select_name_with_join_fetch: true

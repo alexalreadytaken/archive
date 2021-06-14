@@ -14,29 +14,30 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @CrossOrigin
+@RequestMapping("/inventory")
 public class InventoryController {
 
     @NonNull private final InventoryService inventoryService;
 
-    @DeleteMapping("/inventory/{inventoryId}")
+    @DeleteMapping("/{inventoryId}")
     public Inventory deleteInventory(@PathVariable Long inventoryId){
         log.trace("request for delete inventory by id = '{}'",inventoryId);
         return inventoryService.deleteInventory(inventoryId);
     }
 
-    @PutMapping("/inventory/{inventoryId}/introduction")
+    @PutMapping("/{inventoryId}/introduction")
     public Inventory updateInventoryIntroduction(@PathVariable Long inventoryId, @RequestBody String intro){
         log.trace("request for update introduction = '{}' for inventory by id = '{}'",intro,inventoryId);
         return inventoryService.updateInventoryIntroduction(inventoryId,intro);
     }
 
-    @GetMapping("/inventory/{inventoryId}/file")
+    @GetMapping("/{inventoryId}/file")
     public List<File> getInventoryFiles(@PathVariable Long inventoryId){
         log.trace("request for inventory = '{}' files",inventoryId);
         return inventoryService.getInventoryFiles(inventoryId);
     }
 
-    @PostMapping("/inventory/{inventoryId}/file")
+    @PostMapping("/{inventoryId}/file")
     public Inventory addFileToInventory(@PathVariable Long inventoryId,@RequestBody File file){
         log.trace("request for add file to inventory by id = '{}', file = '{}'",inventoryId,file);
         return inventoryService.addFileToInventory(inventoryId,file);

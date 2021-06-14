@@ -27,7 +27,7 @@ public class ErrorsController {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Error notFoundErr(ForClientException ex){
+    public Error badRequestErr(ForClientException ex){
         return ErrorFactory.newError(ex);
     }
 }

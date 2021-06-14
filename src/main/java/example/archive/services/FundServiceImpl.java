@@ -9,13 +9,10 @@ import example.archive.utils.exceptions.NotFoundException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.function.Supplier;
 
 @Service
 @Slf4j
@@ -24,25 +21,9 @@ public class FundServiceImpl implements FundService {
 
     @NonNull private final FundRepo fundRepo;
 
-    @Value("${archive.fund.select_name_with_join_fetch:false}")
-    private boolean joinFetchEnabled;
-
-    private Supplier<List<Fund>> fundListGetter;
-
-    @PostConstruct
-    public void init(){
-        if (joinFetchEnabled){
-            fundListGetter= fundRepo::selectAllWithJoinFetchName;
-            log.trace("enabled select funds with join fetch current fund name");
-        }else {
-            fundListGetter= fundRepo::findAll;
-            log.trace("enabled default select funds");
-        }
-    }
-
     @Override
     public List<Fund> getFundsList() {
-        return fundListGetter.get();
+        return fundRepo.selectAllWithJoinFetchName();
     }
 
     @Override
@@ -102,7 +83,7 @@ public class FundServiceImpl implements FundService {
                 .name(name).fund(fund)
                 .fromDate(LocalDateTime.now())
                 .build();
-        log.trace("created new fund = '{}' name = '{}'",fund.getId(),fundName);
+        log.trace("created new name = '{}' for fund = '{}'",fundName,fund.getId());
         return fundName;
     }
 }
