@@ -41,7 +41,7 @@ public class FundRepoTest {
     }
 
     @Test
-    public void fundSaveTest(){
+    public void fundSave(){
         log.info("test for cascade saving entities");
         Fund fund = TestEntitiesSupplier.getFund();
         fundRepo.save(fund);
@@ -50,14 +50,14 @@ public class FundRepoTest {
     }
 
     @Test
-    public void gettingFundTest(){
+    public void gettingFund(){
         log.info("test for getting fund from db");
         Optional<Fund> one = fundRepo.findById(testFundId);
         assertTrue(one.isPresent(),"fund not found");
     }
 
     @Test
-    public void cascadeFundDeleteTest(){
+    public void cascadeFundDelete(){
         log.info("test for delete fund and entire entities");
         fundRepo.deleteById(testFundId);
         Optional<Fund> fund = fundRepo.findById(testFundId);
@@ -65,7 +65,7 @@ public class FundRepoTest {
     }
 
     @Test
-    public void clearAllTest(){
+    public void clearAll(){
         log.info("just convenient clean");
         fundRepo.deleteAll();
         assertEquals(0, fundRepo.count());
@@ -73,8 +73,8 @@ public class FundRepoTest {
 
     @Test
     @Transactional
-    public void getOldFundNamesTest(){
-        this.updateFundNameTest();
+    public void getOldFundNames(){
+        this.updateFundName();
         Optional<Fund> fundOpt = fundRepo.findById(testFundId);
         assertTrue(fundOpt.isPresent(),"test fund not found");
         Fund fund = fundOpt.get();
@@ -85,7 +85,7 @@ public class FundRepoTest {
 
     @Test
     @Transactional
-    public void updateFundNameTest(){
+    public void updateFundName(){
         log.info("start update name test");
         Optional<Fund> fundOpt = fundRepo.findById(testFundId);
         assertTrue(fundOpt.isPresent(),"test fund not found");

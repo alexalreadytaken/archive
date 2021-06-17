@@ -19,7 +19,7 @@ public class FileRepoTest {
     @Autowired private FileRepo fileRepo;
 
     @Test
-    public void saveFileTest(){
+    public void saveFile(){
         log.info("test for saving file");
         File file = TestEntitiesSupplier.getFile();
         fileRepo.save(file);
@@ -29,14 +29,14 @@ public class FileRepoTest {
     }
 
     @Test
-    public void removeAllFilesTest(){
+    public void removeAllFiles(){
         log.trace("just convenient clean");
         fileRepo.deleteAll();
         assertEquals(0,fileRepo.count());
     }
 
     @Test
-    public void updateFileNumberTest(){
+    public void updateFileNumber(){
         log.trace("test for update file number");
         File file = TestEntitiesSupplier.getFile();
         fileRepo.save(file);
