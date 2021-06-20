@@ -5,7 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Where;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,6 +26,8 @@ public class Fund {
 
     @Column(columnDefinition = "TEXT")
     private String number;
+
+    private char letter;
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true,
             fetch = FetchType.LAZY)

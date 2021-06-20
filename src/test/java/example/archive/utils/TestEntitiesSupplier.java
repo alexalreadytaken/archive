@@ -39,6 +39,8 @@ public class TestEntitiesSupplier {
 
     public static Fund getFund(){
         Fund fund = new Fund();
+        boolean letter = new Random().nextBoolean();
+        fund.setLetter(letter?'р':' ');
         fund.setCurrentFundName(getFundName(fund));
         fund.setInventories(getInventories());
         fund.setNumber("номер фонда");
