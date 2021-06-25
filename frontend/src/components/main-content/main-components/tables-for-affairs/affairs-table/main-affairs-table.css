@@ -1,0 +1,336 @@
+.main-affairs-table {
+  width: 100%;
+  overflow: auto;
+  overflow-y: scroll;
+  height: 450px;
+}
+
+.grid-header-affairs-table {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+
+  display: grid;
+  grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
+}
+
+.affairs-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(55, 205, 50);
+  outline: 2px solid deeppink;
+  outline-offset: -2px;
+}
+
+.grid-start-end-dates {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
+}
+
+.start-end-dates-item {
+  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-dates-day {
+  grid-column-start: 4;
+}
+
+.affair {
+  display: grid;
+  grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
+}
+
+.affair-item {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  /* text-align: center; */
+  outline: 2px solid rgb(98, 3, 54);
+  outline-offset: -2px;
+
+  height: 35px;
+  overflow: hidden;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.case-number {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.number {
+  grid-column-start: 1;
+  width: 80px;
+}
+
+.litera {
+  width: 65px;
+}
+
+.old-number {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  width: 80px;
+}
+
+.start-date {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 200px;
+}
+
+.end-date {
+  grid-column-start: 7;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.sheets {
+  grid-column-start: 10;
+  grid-column-end: 11;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.category {
+  grid-column-start: 11;
+  grid-column-end: 12;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.title {
+  grid-column-start: 12;
+  grid-column-end: 14;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.annotation {
+  grid-column-start: 14;
+  grid-column-end: 15;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.type-documentation {
+  grid-column-start: 15;
+  grid-column-end: 16;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.retired {
+  grid-column-start: 16;
+  grid-column-end: 17;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.defects {
+  grid-column-start: 17;
+  grid-column-end: 18;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.note {
+  grid-column-start: 18;
+  grid-column-end: 19;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+/* AFFAIR ITEMS */
+
+.affair-number {
+  grid-column-start: 1;
+  width: 80px;
+}
+
+.affair-litera {
+  width: 65px;
+}
+
+.affair-old-number {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  width: 80px;
+}
+
+.affair-start-date {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 200px;
+}
+
+.affair-end-date {
+  grid-column-start: 7;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-sheets {
+  grid-column-start: 10;
+  grid-column-end: 11;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-category {
+  grid-column-start: 11;
+  grid-column-end: 12;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-title {
+  grid-column-start: 12;
+  grid-column-end: 14;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-annotation {
+  grid-column-start: 14;
+  grid-column-end: 15;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-type-documentation {
+  grid-column-start: 15;
+  grid-column-end: 16;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-retired {
+  grid-column-start: 16;
+  grid-column-end: 17;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-defects {
+  grid-column-start: 17;
+  grid-column-end: 18;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.affair-note {
+  grid-column-start: 18;
+  grid-column-end: 19;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+/* BLOCK FOR AFFAIR TITLE */
+
+.block-affair-title {
+  background-color: tomato;
+  padding: 10px 20px;
+}
+
+.affair-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.input-affair-title {
+  width: 100%;
+}
+
+/* BLOCK BUTTONS FOR AFFAIR */
+
+.block-buttons-affair {
+  background-color: thistle;
+  padding: 10px 20px;
+}
+
+.button-for-affair {
+  margin-right: 20px;
+}
+
+/* BUTTONS FOR OTHER TABLES */
+
+.buttons-other-tables {
+  background-color: violet;
+  padding: 8px;
+}
+
+.button-condition {
+  margin-right: 20px;
+}
+
+/* POINTER TABLE */
+
+.main-pointer-table {
+}
+
+.grid-header-pointer-table {
+  display: grid;
+  grid-template-columns: 40vh auto 45vh;
+  grid-template-rows: 20px 20px;
+}
+
+.pointer-item-header {
+  display: flex;
+  justify-content: center;
+  outline: 2px dashed deeppink;
+  outline-offset: -2px;
+}
+
+.pointers-header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.grid-pointers-table {
+  display: grid;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100px;
+}
+
+.pointer {
+  display: grid;
+  grid-template-columns: 40vh auto 45vh;
+}
+
+.pointer-item {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  outline: 2px solid blue;
+  outline-offset: -2px;
+}
+
+.type-item {
+}
+
+.value-item {
+}
+
+.note-item {
+}

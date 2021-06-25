@@ -1,0 +1,64 @@
+.main-inventory-table {
+  background-color: rgba(175, 235, 222, 0.678);
+  height: 600px;
+  position: relative;
+}
+
+.inventory-buttons {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Header for inventory tabe */
+
+.grid-header-inventory-table {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: 50px;
+}
+
+.header-inventory-tabel {
+  background-color: rgba(4, 255, 201, 0.678);
+}
+
+.inventory-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  outline: 2px dashed rgb(176, 60, 243);
+  outline-offset: -2px;
+  max-height: 10px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.inventory-item-header:nth-child(-n + 2) {
+  max-height: 50px;
+}
+
+/* Invetory table */
+
+.inventorys {
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgba(0, 171, 134, 0.678);
+}
+
+.grid-inventory-table {
+  display: grid;
+  grid-template-columns: 50px 184px;
+}
+
+.inventory-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  outline: 2px dashed rgb(176, 60, 243);
+  outline-offset: -2px;
+  max-height: 10px;
+  overflow: hidden;
+  padding: 10px;
+}

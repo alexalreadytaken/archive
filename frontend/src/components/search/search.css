@@ -1,0 +1,30 @@
+.search-block {
+  background-color: darkgrey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-group {
+  width: 700px;
+}
+
+.search-number {
+  width: 80px;
+}
+
+.search-name {
+  width: 400px;
+}
+
+.create-foundation {
+  margin-right: 20px;
+}
+
+.buffer-block {
+  margin-right: 20px;
+}
+
+.output-buffer {
+  width: 80px;
+}
