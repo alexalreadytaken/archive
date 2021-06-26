@@ -1,0 +1,49 @@
+.modal-title-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-arrow-right {
+  display: block;
+  width: 33px;
+  height: 30px;
+  background-image: url(../../../img/create-fund-arrow-modal.svg);
+  background-repeat: no-repeat;
+}
+
+.modal-pages {
+  color: rgba(196, 196, 196, 0.8);
+  font-size: 14px;
+}
+
+.modal-button-pages {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.title-oldNames {
+  margin: 10px 0 0 0;
+}
+
+.oldNames-table {
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+}
+
+.oldNames-date {
+  display: flex;
+  align-items: flex-end;
+}
+
+.oldnames-button {
+  margin-right: 30px;
+}
+
+.create-found-buttons {
+  margin: 0 auto;
+}

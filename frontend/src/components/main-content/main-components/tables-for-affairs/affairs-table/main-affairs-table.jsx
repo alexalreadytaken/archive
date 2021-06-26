@@ -1,9 +1,34 @@
-
 import React,{useState} from 'react';
+import AffairItem from './affair-item/affair-item.jsx'
+import createKey from '../../../../../createKey.js'
 import './main-affairs-table.css'
 
-function AffairsTable () {
+function AffairsTable (props) {
 
+  
+  
+
+  let arr = [
+    {
+      id: 1,
+      number: '1',
+      litera: 'a',
+      oldNumbers: '771',
+      startDay: '01',
+      startMounth: 'сентябрь',
+      startYear: '1891',
+      endDay: '21',
+      endMounth: 'декабрь',
+      endYear: '1892',
+      lists: '43',
+      category: 'ОСОБЫЙ',
+      title: 'Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст ',
+      annotation: 'аннотация',
+      type: 'редкий',
+      defects: 'xxx',
+      note: 'Примечание какое то не понятное да да да'
+    }
+  ]
   
 // let pointerTable = document.querySelector('.main-pointer-table');
 // let pointerButton = document.querySelector('.button-pointer');
@@ -15,7 +40,7 @@ function AffairsTable () {
 
   return(
     <div>
-      <div className="main-affairs-table">
+      <div className="main-affairs-table" id={props.id} style={{height: props.height}}>
         <div className="grid-header-affairs-table">
           <div className="affairs-item-header case-number">Номер дела</div>
           <div className="affairs-item-header number">№</div>
@@ -42,271 +67,25 @@ function AffairsTable () {
         
 
         <div className="affairs">
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div><div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
-          <div className="affair">
-            <div className="affair-item affair-number">1</div>
-            <div className="affair-item affair-litera">а</div>
-            <div className="affair-item affair-old-number">33</div>
-            <div className="affair-item affair-start-date-day">03</div>
-            <div className="affair-item affair-start-date-month">Декабрь</div>
-            <div className="affair-item affair-start-date-year">1694</div>
-            <div className="affair-item affair-end-date-day">13</div>
-            <div className="affair-item affair-end-date-month">Ноябрь</div>
-            <div className="affair-item affair-end-date-year">1695</div>
-            <div className="affair-item affair-sheets">666</div>
-            <div className="affair-item affair-category">ОСОБЫЙ</div>
-            <div className="affair-item affair-title">Кто то там с кем то переписывался о чем то том то </div>
-            <div className="affair-item affair-annotation">Аннотация</div>
-            <div className="affair-item affair-type-documentation">редкий наверное</div>
-            <div className="affair-item affair-retired"><input type="checkbox" /></div>
-            <div className="affair-item affair-defects">чтьо</div>
-            <div className="affair-item affair-note">РАньше был номер 33 но мы решили сделать 1</div>
-          </div>
+          {/* Создание айтема в таблице */}
+          {arr.map(el=><AffairItem
+            number={el.number}
+            litera={el.litera}
+            oldNumber={el.oldNumber}
+            startDay={el.startDay}
+            startMounth={el.startMounth}
+            startYear={el.startYear}
+            endDay={el.endDay}
+            endMounth={el.endMounth}
+            endYear={el.endYear}
+            lists={el.lists}
+            category={el.category}
+            title={el.title}
+            annotation={el.annotation}
+            type={el.type}
+            defects={el.defects}
+            note={el.note}
+          key={createKey()}/>)}
         </div>
       
       

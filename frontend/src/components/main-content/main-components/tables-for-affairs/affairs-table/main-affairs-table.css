@@ -19,21 +19,22 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgb(55, 205, 50);
-  outline: 2px solid deeppink;
-  outline-offset: -2px;
+  background-color: rgba(161, 234, 251);
+  outline: 1px solid rgb(218, 220, 224);
+  outline-offset: -1px;
 }
 
 .grid-start-end-dates {
   position: -webkit-sticky;
   position: sticky;
+  top: 90%;
   bottom: 0;
   display: grid;
   grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
 }
 
 .start-end-dates-item {
-  background-color: cadetblue;
+  background-color: rgba(161, 234, 251);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,14 +53,15 @@
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  /* text-align: center; */
-  outline: 2px solid rgb(98, 3, 54);
-  outline-offset: -2px;
-
+  text-align: center;
+  background-color: rgba(253, 253, 253);
+  outline: 1px solid rgb(218, 220, 224);
+  outline-offset: -1px;
   height: 35px;
   overflow: hidden;
   padding: 8px;
   box-sizing: border-box;
+  border: none;
 }
 
 .case-number {
@@ -248,7 +250,9 @@
 /* BLOCK FOR AFFAIR TITLE */
 
 .block-affair-title {
-  background-color: tomato;
+  background-color: rgba(253, 253, 253);
+  outline: 1px solid rgb(218, 220, 224);
+  outline-offset: -1px;
   padding: 10px 20px;
 }
 
@@ -259,12 +263,19 @@
 
 .input-affair-title {
   width: 100%;
+  /* padding: 0px; */
 }
 
 /* BLOCK BUTTONS FOR AFFAIR */
 
+.buttonBox {
+  width: 109px;
+}
+
 .block-buttons-affair {
-  background-color: thistle;
+  background-color: rgba(253, 253, 253);
+  display: flex;
+  gap: 20px;
   padding: 10px 20px;
 }
 
@@ -275,7 +286,9 @@
 /* BUTTONS FOR OTHER TABLES */
 
 .buttons-other-tables {
-  background-color: violet;
+  background-color: rgba(218, 220, 224, 0.3);
+  display: flex;
+  gap: 20px;
   padding: 8px;
 }
 
@@ -284,9 +297,6 @@
 }
 
 /* POINTER TABLE */
-
-.main-pointer-table {
-}
 
 .grid-header-pointer-table {
   display: grid;
@@ -297,8 +307,9 @@
 .pointer-item-header {
   display: flex;
   justify-content: center;
-  outline: 2px dashed deeppink;
-  outline-offset: -2px;
+  background-color: rgba(161, 234, 251);
+  outline: 1px solid rgb(218, 220, 224);
+  outline-offset: -1px;
 }
 
 .pointers-header {
@@ -310,27 +321,22 @@
   display: grid;
   overflow: scroll;
   overflow-x: hidden;
-  height: 100px;
+  height: 160px;
 }
 
 .pointer {
   display: grid;
+  height: 30px;
   grid-template-columns: 40vh auto 45vh;
 }
 
 .pointer-item {
   display: flex;
+  align-items: center;
   text-align: center;
   justify-content: center;
-  outline: 2px solid blue;
-  outline-offset: -2px;
-}
-
-.type-item {
-}
-
-.value-item {
-}
-
-.note-item {
+  background-color: rgba(253, 253, 253);
+  outline: 1px solid rgb(218, 220, 224);
+  outline-offset: -1px;
+  border: none;
 }
