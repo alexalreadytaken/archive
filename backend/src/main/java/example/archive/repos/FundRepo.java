@@ -14,8 +14,8 @@ import java.util.List;
 public interface FundRepo extends JpaRepository<Fund,Long> {
 
     //кастомные query
-    //здесь используется HQL, чтобы включить нативные mysql,postgresql,... запросы надо добавить nativeQuery=true
-    @Query("select f from Fund f left outer join f.currentFundName")
+    //здесь используется HQL, чтобы включить нативные (mysql,postgresql,...) запросы надо добавить nativeQuery=true
+    @Query("select f from Fund f left join fetch f.currentFundName")
     List<Fund> selectAllWithJoinFetchName();
 
     //кастомные query

@@ -9,6 +9,7 @@ import example.archive.utils.exceptions.NotFoundException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -30,6 +31,10 @@ public class FundServiceImpl implements FundService {
     @Override
     public Fund saveFund(Fund fund) {
         log.trace("save fund = '{}'",fund);
+        FundName currentFundName = fund.getCurrentFundName();
+        if (currentFundName!=null) {
+            currentFundName.setFund(fund);
+        }
         return fundRepo.save(fund);
     }
 

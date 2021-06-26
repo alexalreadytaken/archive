@@ -4,6 +4,7 @@ import example.archive.entities.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -42,11 +43,12 @@ public class TestEntitiesSupplier {
     public static Fund getFund(){
         Fund fund = new Fund();
         boolean letter = new Random().nextBoolean();
-        fund.setLetter(letter?'р':' ');
+        fund.setLetter(letter?"р":null);
         fund.setCurrentFundName(getFundName(fund));
         fund.setInventories(getInventories());
         fund.setNumber("номер фонда");
-        fund.setOldNames(new ArrayList<>());
+        List<FundName> oldNames = Arrays.asList(getFundName(fund),getFundName(fund),getFundName(fund),getFundName(fund));
+        fund.setOldNames(oldNames);
         return fund;
     }
 

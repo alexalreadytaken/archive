@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,7 +95,9 @@ public class FundRepoTest {
         FundName fundName = TestEntitiesSupplier.getFundName(fund);
         fund.setCurrentFundName(fundName);
         if (currentFundName != null) {
-            fund.getOldNames().add(currentFundName);
+            ArrayList<FundName> oldNames = new ArrayList<>(fund.getOldNames());
+            oldNames.add(currentFundName);
+            fund.setOldNames(oldNames);
         }
         fundRepo.save(fund);
         assertFalse(fund.getOldNames().contains(fundName),"current fund name contains in old names");

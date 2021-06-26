@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Builder//аннотация ломбока, создает билдер для класса
 @ToString(exclude = "fund")//аннотация ломбока
 @EqualsAndHashCode(of = "id")//аннотация ломбока
-@JsonIgnoreProperties(value = "fund")//при возвращении клиенту эти поля будут игнорироватся
+@JsonIgnoreProperties(value = {"fund"})//при возвращении клиенту эти поля будут игнорироватся
 public class FundName {
 
     @Id
