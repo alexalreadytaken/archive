@@ -57,7 +57,7 @@ function Search (props) {
         </Box>
 
         <Box mr={2}>
-          <TextField
+          {/* <TextField
             className={classes.root}
             classes={{root: 'search-name'}}
             label="Название фонда"
@@ -65,7 +65,14 @@ function Search (props) {
             defaultValue=""
             variant="outlined"
             size="small"
-          />
+            list="fundNames"
+          /> */}
+
+          <input type="text" list="fundNames" id="fundName" onChange={()=>search(this)}/>
+
+          <datalist id="fundNames">
+            <option value="Тест"></option>
+          </datalist>
         </Box>
 
         <Button variant="contained" onClick={()=>search(this)}  style={{boxShadow: "none"}} 

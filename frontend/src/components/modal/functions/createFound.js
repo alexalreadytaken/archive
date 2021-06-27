@@ -1,3 +1,5 @@
+import urlConfig from '../../../urlConfig.json'
+
 function createFound () { 
   let fundNumber = document.getElementById('fundNumberCreate');
   let fundLetter = document.getElementById('fundLetterCreate');
@@ -51,15 +53,15 @@ function createFound () {
   }
 
   
-  // fetch('http://10.3.0.87:3000/fund', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json;charset=utf-8'
-  //   },
-  //   body: JSON.stringify(createData)
-  // }).then(res => res.json())
-  //   .then(res => console.log(res))
-  //   .catch(err => {throw new Error(err)});
+  fetch('http://' + urlConfig.url.ip + ':' + urlConfig.url.port + '/fund', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(createData)
+  }).then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => {throw new Error(err)});
 }
 
 
