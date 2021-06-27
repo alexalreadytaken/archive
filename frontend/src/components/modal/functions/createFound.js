@@ -6,6 +6,7 @@ function createFound () {
   let fundName = document.getElementById('fundNameCreate');
   let newFundDate = document.getElementById('date');
   let arrOldNames = [];
+  let createData = {}
 
   if (fundNumber.value.length === 0 || fundLetter.value.length === 0 || fundName.value.length === 0 || newFundDate.value.length === 0) {
     alert ('Введены не все значения!');
@@ -26,8 +27,7 @@ function createFound () {
       }
     }
 
-    // Готовый для отправки объект
-  let createData = {}
+    // Готовый для отправки объек
   if (arrOldNames.length === 0) {
     createData = {
     number: fundNumber.value,
