@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j//логгер от ломбока, генерируется при компиляции
 @RequiredArgsConstructor//конструктор от ломобока, генерируется при компиляции, ищет final поля
 @RequestMapping("/file")//перед всеми запросами этого контроллера ставится /file
+@CrossOrigin
 public class FileController {
 
     //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно

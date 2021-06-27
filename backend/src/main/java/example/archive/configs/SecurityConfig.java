@@ -13,8 +13,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()// TODO: 6/22/21 check
-                    .and()
                 .authorizeRequests()
                 .antMatchers("**").permitAll()// дает доступ на все без авторизации
                     .and()

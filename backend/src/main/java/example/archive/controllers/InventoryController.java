@@ -14,6 +14,7 @@ import java.util.List;
 @Slf4j//логгер от ломбока, генерируется при компиляции
 @RequiredArgsConstructor//конструктор от ломобока, генерируется при компиляции, ищет final поля
 @RequestMapping("/inventory")//перед всеми запросами этого контроллера ставится /inventory
+@CrossOrigin
 public class InventoryController {
 
     //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно
