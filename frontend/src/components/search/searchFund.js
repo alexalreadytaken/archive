@@ -28,7 +28,6 @@ function search(){
       let fundNumber = json[i].number;
       let newOptionNumber = document.createElement('option');
       newOptionNumber.value = fundNumber;
-      console.log(newOptionNumber);
       listFundNumbers.appendChild(newOptionNumber);
     }
   }
