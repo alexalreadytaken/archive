@@ -45,7 +45,7 @@ function Search (props) {
       {/* Поиск фонда */}
       <form className={classes.root} className="search-form" noValidate autoComplete="off" >
         <Box ml={2} mr={2}>
-          <TextField
+          {/* <TextField
               className={classes.root}
               classes={{root: 'search-number'}}
               label="Номер фонда"
@@ -53,7 +53,12 @@ function Search (props) {
               defaultValue=""
               variant="outlined"
               size="small"
-            />
+            /> */}
+
+            <input type="text" list="listFundNumbers" id="fundNumber" className="inputFundNumber" placeholder="Номер фонда" onChange={()=>search(this)}/>
+
+            <datalist id="listFundNumbers">
+          </datalist>
         </Box>
 
         <Box mr={2}>
@@ -68,10 +73,9 @@ function Search (props) {
             list="fundNames"
           /> */}
 
-          <input type="text" list="fundNames" id="fundName" onChange={()=>search(this)}/>
+          <input type="text" list="listFundNames" id="fundName" className="inputFundName" placeholder="Имя фонда" onChange={()=>search(this)}/>
 
-          <datalist id="fundNames">
-            <option value="Тест"></option>
+          <datalist id="listFundNames">
           </datalist>
         </Box>
 

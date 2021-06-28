@@ -13,6 +13,24 @@
   width: 120px;
 }
 
+.inputFundNumber {
+  width: 140px;
+  height: 37px;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.inputFundName {
+  width: 340px;
+  height: 37px;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(196, 196, 196);
+}
+
 .search-name {
   width: 340px;
 }

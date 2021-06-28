@@ -27,7 +27,7 @@
 .grid-start-end-dates {
   position: -webkit-sticky;
   position: sticky;
-  top: 90%;
+  top: 95%;
   bottom: 0;
   display: grid;
   grid-template-columns: 80px 65px 80px 45px 92px 60px 45px 92px 60px 60px 85px 350px 0px 120px 160px 90px 75px 180px;
