@@ -3,7 +3,9 @@ package example.archive.services;
 import example.archive.entities.Fund;
 import example.archive.entities.FundName;
 import example.archive.entities.Inventory;
+import example.archive.repos.FundNameRepo;
 import example.archive.repos.FundRepo;
+import example.archive.repos.InventoryRepo;
 import example.archive.services.interfaces.FundService;
 import example.archive.utils.exceptions.NotFoundException;
 import lombok.NonNull;
@@ -12,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,6 +25,8 @@ public class FundServiceImpl implements FundService {
 
     //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно
     @NonNull private final FundRepo fundRepo;
+    @NonNull private final FundNameRepo fundNameRepo;
+    @NonNull private final InventoryRepo inventoryRepo;
 
     @Override
     public List<Fund> getFundsList() {
@@ -55,6 +60,7 @@ public class FundServiceImpl implements FundService {
         fund.setCurrentFundName(newFundName);
         if (currentFundName != null) {
             fund.getOldNames().add(currentFundName);
+            fundNameRepo.save(newFundName);
         }
         return fundRepo.save(fund);
     }
@@ -70,6 +76,7 @@ public class FundServiceImpl implements FundService {
         Fund fund = getFundOrThrow(fundId);
         log.trace("add inventory = '{}' to fund = '{}'",inventory,fund);
         fund.getInventories().add(inventory);
+        inventoryRepo.save(inventory);
         fundRepo.save(fund);
         return inventory;
     }

@@ -2,6 +2,7 @@ package example.archive.services;
 
 import example.archive.entities.File;
 import example.archive.entities.Inventory;
+import example.archive.repos.FileRepo;
 import example.archive.repos.InventoryRepo;
 import example.archive.services.interfaces.InventoryService;
 import example.archive.utils.exceptions.NotFoundException;
@@ -19,6 +20,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно
     @NonNull private final InventoryRepo inventoryRepo;
+    @NonNull private final FileRepo fileRepo;
 
     @Override
     public Inventory deleteInventory(Long inventoryId) {
@@ -47,6 +49,7 @@ public class InventoryServiceImpl implements InventoryService {
         Inventory inventory = getInventoryOrThrow(inventoryId);
         log.trace("add file = '{}' to inventory = '{}'",file,inventory);
         inventory.getFiles().add(file);
+        fileRepo.save(file);
         return inventoryRepo.save(inventory);
     }
 
