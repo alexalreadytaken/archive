@@ -9,13 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-     // конфиг, позволяет реализовать авторизацию, систему ролей и т.д.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("**").permitAll()// дает доступ на все без авторизации
+                .antMatchers("**").permitAll()
                     .and()
-                .csrf().disable();//так надо
+                .csrf().disable();
     }
 }

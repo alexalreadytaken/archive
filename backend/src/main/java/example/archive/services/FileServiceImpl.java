@@ -9,12 +9,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-@Service//специальная аннотация для spring, что бы он мог понять, что этот класс нужно передавать другим
-@Slf4j//логгер от ломбока, генерируется при компиляции
-@RequiredArgsConstructor//конструктор от ломобока, генерируется при компиляции, ищет final поля
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class FileServiceImpl implements FileService {
 
-    //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно
     @NonNull private final FileRepo fileRepo;
 
     @Override
@@ -36,7 +35,7 @@ public class FileServiceImpl implements FileService {
         return fileRepo.findById(fileId)
                 .orElseThrow(()->{
                     log.warn("file by id '{}' not found",fileId);
-                    throw new NotFoundException("дело не найдено");//передается в ErrorsController
+                    throw new NotFoundException("дело не найдено");
                 });
     }
 }

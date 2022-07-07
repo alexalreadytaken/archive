@@ -13,12 +13,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service//специальная аннотация для spring, что бы он мог понять, что этот класс нужно передавать другим
-@Slf4j//логгер от ломбока, генерируется при компиляции
-@RequiredArgsConstructor//конструктор от ломобока, генерируется при компиляции, ищет final поля
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class InventoryServiceImpl implements InventoryService {
 
-    //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно
     @NonNull private final InventoryRepo inventoryRepo;
     @NonNull private final FileRepo fileRepo;
 
@@ -58,7 +57,7 @@ public class InventoryServiceImpl implements InventoryService {
         return inventoryRepo.findById(inventoryId)
                 .orElseThrow(() -> {
                     log.warn("inventory by id = '{}' not found",inventoryId);
-                    return new NotFoundException("опись не найдена");//передается в ErrorsController
+                    return new NotFoundException("опись не найдена");
                 });
     }
 }

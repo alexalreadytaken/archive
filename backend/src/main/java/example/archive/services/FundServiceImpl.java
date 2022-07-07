@@ -18,12 +18,11 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
-@Service//специальная аннотация для spring, что бы он мог понять, что этот класс нужно передавать другим
-@Slf4j//логгер от ломбока, генерируется при компиляции
-@RequiredArgsConstructor//конструктор от ломобока, генерируется при компиляции, ищет final поля
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class FundServiceImpl implements FundService {
 
-    //spring автоматически передаст имплементацию, если их больше одной нужно говорить какую конкретно
     @NonNull private final FundRepo fundRepo;
     @NonNull private final FundNameRepo fundNameRepo;
     @NonNull private final InventoryRepo inventoryRepo;
@@ -86,7 +85,7 @@ public class FundServiceImpl implements FundService {
         return fundRepo.findById(fundId)
                 .orElseThrow(()-> {
                     log.warn("fund by id = '{}' not found",fundId);
-                    return new NotFoundException("фонд не найден");//передается в ErrorsController
+                    return new NotFoundException("фонд не найден");
                 });
     }
 
